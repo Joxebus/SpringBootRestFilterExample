@@ -4,7 +4,6 @@ import com.nearsoft.challenge.entity.User;
 import com.nearsoft.challenge.entity.UserAuthorization;
 import com.nearsoft.challenge.service.UserAuthorizationService;
 import com.nearsoft.challenge.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +33,9 @@ public class SecurityController {
         return userAuthorizationService.create(user);
     }
 
-    @GetMapping(value = "/logout", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/logout", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public void logout(@RequestBody UserAuthorization userAuthorization){
-        userAuthorization = userAuthorizationService.findByUsernameAndToken(userAuthorization.getUserName(), userAuthorization.getToken());
+        userAuthorization = userAuthorizationService.findByUsernameAndToken(userAuthorization.getUsername(), userAuthorization.getToken());
         if(userAuthorization != null){
             userAuthorizationService.delete(userAuthorization.getId());
         }

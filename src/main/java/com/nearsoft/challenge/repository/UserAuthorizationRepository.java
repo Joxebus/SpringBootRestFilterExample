@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserAuthorizationRepository extends CrudRepository<UserAuthorization, Integer> {
 
-    UserAuthorization findFirstByUserNameAndToken(String username, String token);
+    UserAuthorization findFirstByUsernameAndToken(String username, String token);
 
-    UserAuthorization findFirstByUserName(String username);
+    UserAuthorization findFirstByUsername(String username);
 }

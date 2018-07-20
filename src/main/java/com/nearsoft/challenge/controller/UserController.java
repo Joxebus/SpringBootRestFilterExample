@@ -26,7 +26,7 @@ public class UserController {
         return userService.create(user);
     }
 
-    @GetMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
     public Iterable<User> list() {
         return userService.findAll();
     }

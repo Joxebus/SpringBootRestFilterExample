@@ -1,6 +1,7 @@
 package com.nearsoft.challenge.config;
 
 import com.nearsoft.challenge.filter.SecurityFilter;
+import com.nearsoft.challenge.service.UserAuthorizationService;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

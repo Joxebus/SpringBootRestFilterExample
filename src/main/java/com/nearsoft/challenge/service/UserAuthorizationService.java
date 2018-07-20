@@ -25,7 +25,7 @@ public class UserAuthorizationService {
         if(userAuthorization == null){
             userAuthorization = new UserAuthorization();
         }
-        userAuthorization.setUserName(user.getUsername());
+        userAuthorization.setUsername(user.getUsername());
         userAuthorization.setToken(UUID.randomUUID().toString());
         return userAuthorizationRepository.save(userAuthorization);
     }
@@ -35,11 +35,11 @@ public class UserAuthorizationService {
     }
 
     public UserAuthorization findByUsername(String username){
-        return userAuthorizationRepository.findFirstByUserName(username);
+        return userAuthorizationRepository.findFirstByUsername(username);
     }
 
     public UserAuthorization findByUsernameAndToken(String username, String token){
-        return userAuthorizationRepository.findFirstByUserNameAndToken(username, token);
+        return userAuthorizationRepository.findFirstByUsernameAndToken(username, token);
     }
 
     public void delete(int id){

@@ -40,7 +40,7 @@ class PersonControllerRestSpec extends Specification {
         HttpEntity<User> data = new HttpEntity<>(user, requestHeaders)
         def response = restTemplate.postForEntity("/security/login", data, UserAuthorization)
         userAuthorization = response.getBody()
-        requestHeaders.add("user", userAuthorization.getUserName())
+        requestHeaders.add("user", userAuthorization.getUsername())
         requestHeaders.add("authorization", userAuthorization.getToken())
         securityRequestHeaders = requestHeaders
         httpSecurityEntity = new HttpEntity<String>("parameters", securityRequestHeaders)

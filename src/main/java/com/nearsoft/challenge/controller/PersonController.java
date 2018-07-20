@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/people")
@@ -30,30 +31,30 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @PostMapping("/")
+    @PostMapping(value = "/", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Person create(@RequestBody Person newPerson){
         Person person = personService.create(newPerson);
         return person;
     }
 
-    @PutMapping("/")
+    @PutMapping(value = "/", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Person update(@RequestBody Person newPerson){
         Person person = personService.update(newPerson);
         return person;
     }
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/", produces = APPLICATION_JSON_VALUE)
     public Iterable<Person> list(){
         return personService.findAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{id}", produces = APPLICATION_JSON_VALUE)
     public Person getById(@PathVariable(name = "id") int id){
         return personService.findById(id);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable(name = "id") int id){
         personService.delete(id);

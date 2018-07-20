@@ -14,7 +14,7 @@ public class UserAuthorization {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonIgnore
     private int id;
-    private String userName;
+    private String username;
     private String token;
 
     public int getId() {
@@ -25,12 +25,12 @@ public class UserAuthorization {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getToken() {
@@ -52,7 +52,7 @@ public class UserAuthorization {
 
         if (id != that.id)
             return false;
-        if (userName != null ? !userName.equals(that.userName) : that.userName != null)
+        if (username != null ? !username.equals(that.username) : that.username != null)
             return false;
         return token != null ? token.equals(that.token) : that.token == null;
     }
@@ -60,7 +60,7 @@ public class UserAuthorization {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (token != null ? token.hashCode() : 0);
         return result;
     }
